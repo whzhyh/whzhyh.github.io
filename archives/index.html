@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Archives | reStart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="reStart">
+<meta property="og:url" content="http://hongzheng.me/archives/index.html">
+<meta property="og:site_name" content="reStart">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="reStart">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="reStart" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">reStart</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">再出发</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hongzheng.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-restart_from_hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/20/restart_from_hexo/" class="article-date">
+  <time datetime="2014-11-20T06:39:59.000Z" itemprop="datePublished">Nov 20 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/生活/">生活</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/20/restart_from_hexo/">重新拾起我的博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前把博客从wordpress迁移到了hexo. 但是不知道是什么原因就挂了，一直也没有弄，后来就忘了。忘了也就不写博客了。写博客是个很好的记录无论是学习或是生活的好方式，可惜一直没有养成好习惯。</p>
+<p>最近学到了些新东西，发现当时是挺明白的，过后就不记的了。好记性不如烂笔头。似乎东西不写下来，就不是自己的。</p>
+<p>终于又把博客弄好了，希望这次能多写几篇。</p>
+<p>博客的搭建可以参考这个教程: <a href="http://zipperary.com/categories/hexo/" target="_blank" rel="external">Zippera’s blog</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hongzheng.me/2014/11/20/restart_from_hexo/" data-id="cikkjyvyg0007mhonp3f4ga9b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vsftp_configuration" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/20/vsftp_configuration/" class="article-date">
+  <time datetime="2014-01-20T07:23:41.000Z" itemprop="datePublished">Jan 20 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/20/vsftp_configuration/">vsftp 配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在vps上装了个了wordpress，想把博客上的内容转过来，需要装一个Wordpress Importer插件。居然还要ftp权限。好吧，我来装一个。</p>
+<p>系统是sentos，vsftp可以直接由yum来安装, <code>yum install vsftpd</code></p>
+<p>启动一下，看看是不是正常安装了。</p>
+<p><code>service vsftpd start</code></p>
+<p>启动成功，而且匿名用户访问成功。</p>
+<p>接下来我们要添加用户，总不能只用匿名用户吧，而且权限也不够，这个vsftp的用户系统似乎是跟linux的用户系统关联的。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd hongzheng <span class="comment">#添加用户</span></span><br><span class="line">passwd hongzheng <span class="comment">#修改密码</span></span><br></pre></td></tr></table></figure></p>
+<p>之后要修改vsftpd.conf, <code>vi /etc/vsftpd/vsftpd.conf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO &#160;#&#31105;&#27490;&#21311;&#21517;&#35775;&#38382;&#10;userlist_deny=NO #(&#36825;&#26465;&#38656;&#25163;&#21160;&#28155;&#21152;&#21040;&#26368;&#21518;)&#20351;&#29992;FTP&#29992;&#25143;&#34920;&#65292;&#34920;&#37324;&#27809;&#26377;&#30340;&#29992;&#25143;&#38656;&#35201;&#28155;&#21152;&#25165;&#33021;&#30331;&#24405;</span><br></pre></td></tr></table></figure></p>
+<p><code>vi /etc/vsftpd/user_list</code> #将里面其它初始用户全部删除，加入刚刚我们新建的hongzheng用户。</p>
+<p>再测试一下，成功登录！哈哈，但是默认的目录是哪个呢，我是要改wordpress，所以要把目录设置在/var/www/html。<code>vi /etc/vsftpd/vsftpd.conf</code><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chroot_<span class="built_in">local</span>_user=YES</span><br><span class="line">chroot_list_<span class="built_in">enable</span>=YES</span><br><span class="line">chroot_list_file=/etc/vsftpd/chroot_list <span class="comment">#被列入此文件的用户，在登录后将不能切换到自己目录以外的其他目录从而有利于FTP服务器的安全管理和隐私保护。此文件需自己建立</span></span><br><span class="line">user_config_dir=/etc/vsftpd/userconf</span><br></pre></td></tr></table></figure></p>
+<p><code>vi /etc/vsftpd/chroot_list</code> 创建chroot_list这个文件，似乎这个文件只要置为空就可以了，那就先这样吧。<br><code>mkdir /etc/vsftpd/userconf</code> 这个文件夹里，要放入每个用户的配置文件。<br><code>vi /etc/vsftpd/userconf/hongzheng</code> 新建以用户名同名的文件</p>
+<p>在里面指定<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">local</span>_root=/var/www/html</span><br></pre></td></tr></table></figure></p>
+<p>重新启动，能成功登录了，目录也是对的，还以为一切搞定呢，似乎没有写的权限，估计是hongzheng这个用户对/var/www没有写权限导致的。</p>
+<p><code>chmod 777 -R /var/html</code> 这样做可能安全性不好，就先这样吧。</p>
+<p>现在一切都正常了。</p>
+<p>参考资料：</p>
+<p><a href="http://jingyan.baidu.com/article/adc815133476bdf723bf7393.html" target="_blank" rel="external">http://jingyan.baidu.com/article/adc815133476bdf723bf7393.html</a></p>
+<p><a href="http://www.cnblogs.com/alex-blog/articles/2652337.html" target="_blank" rel="external">http://www.cnblogs.com/alex-blog/articles/2652337.html</a></p>
+<p><a href="http://blog.163.com/xiaohui_1123@126/blog/static/398052402010101995025953/" target="_blank" rel="external">http://blog.163.com/xiaohui_1123@126/blog/static/398052402010101995025953/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hongzheng.me/2014/01/20/vsftp_configuration/" data-id="cikkjyvyb0005mhon9ls7hxlv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-digitalocean-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/19/digitalocean-mysql/" class="article-date">
+  <time datetime="2014-01-20T03:34:09.000Z" itemprop="datePublished">Jan 19 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/19/digitalocean-mysql/">DigitalOcean mysql无法启动</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看到DigitalOcean的vps价格不贵，想装来试试，如果效果好的话，就把godaddy上的博客迁移过来。但是装好mysql之后，无法启动，让我很是郁闷。</p>
+<p>下面我们来看下错误日志吧，大概就是这个样子的：</p>
+<pre>
+131005 14:11:41 [Note] Plugin 'FEDERATED' is disabled.
+131005 14:11:41 InnoDB: The InnoDB memory heap is disabled
+131005 14:11:41 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+131005 14:11:41 InnoDB: Compressed tables use zlib 1.2.3.4
+131005 14:11:41 InnoDB: Initializing buffer pool, size = 128.0M
+InnoDB: mmap(135987200 bytes) failed; errno 12
+131005 14:11:41 InnoDB: Completed initialization of buffer pool
+131005 14:11:41 InnoDB: Fatal error: cannot allocate memory for the buffer pool
+131005 14:11:41 [ERROR] Plugin 'InnoDB' init function returned error.
+131005 14:11:41 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+131005 14:11:41 [ERROR] Unknown/unsupported storage engine: InnoDB
+</pre>
+
+<p>开始总以为是mysql配置的问题，后来经过研究，居然是因为没有开启 Swap Space。同样的问题其他人也遇到过。不得不说，这应该算是DigitalOcean的bug吧。</p>
+<p>开启Swap Space的过程略复杂，我就偷下懒，把别人的方法copy过来了。</p>
+<h2 id="Check_for_Swap_Space"><a href="#Check_for_Swap_Space" class="headerlink" title="Check for Swap Space"></a>Check for Swap Space</h2><hr>
+<p>Before we proceed to set up a swap file, we need to check if any swap files have been enabled on the VPS by looking at the summary of swap usage.</p>
+<pre>sudo swapon -s</pre>
+An empty list will confirm that you have no swap files enabled:
+<pre>Filename                Type        Size    Used    Priority</pre>
+
+<h2 id="Check_the_File_System"><a href="#Check_the_File_System" class="headerlink" title="Check the File System"></a>Check the File System</h2><hr>
+<p>After we know that we do not have a swap file enabled on the virtual server, we can check how much space we have on the server with the <code>df</code>command. The swap file will take 512MB— since we are only using up about 8% of the /dev/sda, we can proceed.</p>
+<pre>df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/sda        20907056 1437188  18421292   8% /
+udev              121588       4    121584   1% /dev
+tmpfs              49752     208     49544   1% /run
+none                5120       0      5120   0% /run/lock
+none              124372       0    124372   0% /run/shm</pre>
+
+<h2 id="Create_and_Enable_the_Swap_File"><a href="#Create_and_Enable_the_Swap_File" class="headerlink" title="Create and Enable the Swap File"></a>Create and Enable the Swap File</h2><hr>
+<p>Now it’s time to create the swap file itself using the dd command :</p>
+<pre>sudo dd if=/dev/zero of=/swapfile bs=1024 count=512k</pre>
+“of=/swapfile” designates the file’s name. In this case the name is swapfile.
+
+Subsequently we are going to prepare the swap file by creating a linux swap area:
+<pre>sudo mkswap /swapfile</pre>
+The results display:
+<pre>Setting up swapspace version 1, size = 262140 KiB
+no label, UUID=103c4545-5fc5-47f3-a8b3-dfbdb64fd7eb</pre>
+Finish up by activating the swap file:
+<pre>sudo swapon /swapfile</pre>
+You will then be able to see the new swap file when you view the swap summary.
+<pre>swapon -s
+Filename                Type        Size    Used    Priority
+/swapfile                               file        262140    0    -1</pre>
+This file will last on the virtual private server until the machine reboots. You can ensure that the swap is permanent by adding it to the fstab file.
+
+Open up the file:
+<pre>sudo nano /etc/fstab</pre>
+Paste in the following line:
+<pre> /swapfile       none    swap    sw      0       0</pre>
+Swappiness in the file should be set to 0\. Skipping this step may cause both poor performance, whereas setting it to 0 will cause swap to act as an emergency buffer, preventing out-of-memory crashes.
+
+You can do this with the following commands:
+<pre>echo 0 | sudo tee /proc/sys/vm/swappiness
+echo vm.swappiness = 0 | sudo tee -a /etc/sysctl.conf</pre>
+To prevent the file from being world-readable, you should set up the correct permissions on the swap file:
+<pre>sudo chown root:root /swapfile
+sudo chmod 0600 /swapfile</pre>
+
+<p>参考资料：<a href="https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04" target="_blank" rel="external">https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hongzheng.me/2014/01/19/digitalocean-mysql/" data-id="cikkjyvyq000amhongdch5a64" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-yum_install_mongodb_nodejs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/19/yum_install_mongodb_nodejs/" class="article-date">
+  <time datetime="2014-01-19T21:56:57.000Z" itemprop="datePublished">Jan 19 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/19/yum_install_mongodb_nodejs/">用yum安装mongodb, nodejs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近装了个vps，想尽可能用yum来管理软件包。</p>
+<p>Centos里yum默认的源里面的包数量有限，版本更新不及时。</p>
+<p>1. mongodb</p>
+<p>我找到了mongodb官方的源，以下是安装过程：</p>
+<pre>vi /etc/yum.repos.d/10gen.repo</pre>
+里面写入内容
+<pre>[10gen]
+name=10gen Repository
+baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
+gpgcheck=0</pre>
+之后运行
+<pre>yum install mongo-10gen-server mongo-10gen</pre>
+启动mongodb
+<pre>service mongod start</pre>
+2\. nodejs
+
+我找到了另外一个源，这个源是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS、Scientific Linux 等提供高质量软件包的项目。我首先就应该用这个来安装的，只怪自己孤陋寡闻。
+<pre>wget http://download-i2.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+sudo rpm -ivh epel-release-6-8.noarch.rpm
+yum install nodejs.x86_64 --enablerepo=epel
+yum install npm.noarch</pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hongzheng.me/2014/01/19/yum_install_mongodb_nodejs/" data-id="cikkjyvxw0002mhonee9lypow" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ajaxfileupload_ie8_problems" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/03/ajaxfileupload_ie8_problems/" class="article-date">
+  <time datetime="2014-01-03T06:13:37.000Z" itemprop="datePublished">Jan 3 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/03/ajaxfileupload_ie8_problems/">AjaxFileUpload IE8 problems</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本不是做前端的，无奈公司缺少有经验的前端开发人员，只能偶尔客串一下。</p>
+<p>今天被人拉着去解决浏览器兼容问题。是一个文件上传功能，这个功能在chrome上运行良好，但要求兼容IE8，文件上传功能无法正常运行了。功能用到了AjaxFileUpload这个插件。经过调试，主要有两个问题。</p>
+<ol>
+<li>因为IE安全限制问题，没有点击file的浏览按钮选择文件都不让上传。一定要手动点击，js触发click事件是无效的。</li>
+</ol>
+<p>方案：由于页面样式是自定义的，不能使用默认的file控件。所以采用参考资料中的方案，在自定义的“选择文件”的按钮上放置file控件，并置file控件为透明。这样的话，用户以为自己点击的是“选择文件”按钮，而实际上是点击的file控件上的按钮。</p>
+<ol>
+<li>对于json类型的返回值，ie会提示下载文件，而不能由AjaxFileUpload的success handler捕获。</li>
+</ol>
+<p>方案：把response的content-type由application/json改为text/html或text/plain。</p>
+<p>参考：</p>
+<p><a href="http://www.qttc.net/201305334.html" target="_blank" rel="external">IE input file隐藏不能上传文件解决方法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hongzheng.me/2014/01/03/ajaxfileupload_ie8_problems/" data-id="cikkjyvz5000imhonp80whw6f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-change_of_myself" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/12/24/change_of_myself/" class="article-date">
+  <time datetime="2013-12-24T14:15:10.000Z" itemprop="datePublished">Dec 24 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/政治与社会/">政治与社会</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/12/24/change_of_myself/">从一个愤青到自干五</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>终于自己搭建了个blog，第一篇博客要写点什么呢，这么有意义的开始，还是献给伟大的祖国吧。</p>
+<p>记的刚毕业的时候，喜欢说一句话，“上学的时候觉着自己是天之骄子，毕业之后才发现自己悲催的要死”。以此来开始我对社会现状不满的发泄。做为激进的愤青，对党的腐败，深恶痛绝，看到官二代和富二代们的奢侈生活，大感平民的上升通道基本被堵死。当在美帝度过了美好的1个月后，更加感到自己生活在水深火热之中。美国的水是那么的清澈，空气是那样的清新，在水族馆看鱼，可以慢慢的欣赏，不用在人潮下走马观花。人们不用住在拥堵的城市，不用担心食品安全，买车也不用交重税。总之，国外的月亮都比国内的圆。中国人民面临着新的三座大山，房子，医疗，教育。在北京这个全国人民都来买房的地方，想拥有自己的房子，难；想生个孩子有户口，在北京上学，高考，难；想上下班不那么累不那么挤，难。在这么多困难下，我想去美帝生活的想法萌发了，也渐渐茁壮，也许我未来真的会去美帝生活。但我现在敢说，我爱生我养我的地方，我们的国家，我们的党。</p>
+<p>在大学上学的时候，负责维护学校的论坛，每当有学生发个略有政治敏感性的帖子，总会招来网警的警告，甚至还要求我们手动过滤所有的帖子，删除不良信息。当时很反感，觉着为什么我们不能向美帝一样民主，自由。上网不用翻墙，可以想说我们任意想说的话，可以发泄对党和政府的不满。当然我迷上了翻墙，看到了外面的世界，感觉很新鲜。一出去自然要去看看那些政府不让我们触碰的信息，大纪元等网站就成了我常去的地方，更加让我对党的腐败深恶痛绝。只是因为某人是某人的儿子，就可以衣食无忧，大肆敛财。想为什么当官的孩子还当官，而老百姓想考个公务员这么难。</p>
+<p>在我闲下来的时候，喜欢看新闻的我，偶然接触到了印度新闻，也试图是了解印度的一争，才发现，民主不是万灵丹。看到台湾的政治乱象，才知道民主有时候也是阻碍。一个偶然的机会看到了www.santaihu.com从而接触到ccnovel.com，那年那兔那些事，天涯国际观察，通过这些网站，我了解了很多不一样的信息。我们的国家在被人封锁压制的情况下，发展壮大，这是一个了不起的成就，党在经济上的成就我不敢说前无古人，后无来者，但至少是一个奇迹。这样的奇迹不是发生在民主的印度，而是一个集体领导的中国。西方国家总是鼓吹印度会超越中国，以证明民主的优越性，但是无奈印度太不争气。</p>
+<p>民主有很多弊端，也很容易变成民粹。</p>
+<p>民主导致政党为了选举过份许诺社会福利，加大国家负担。社会福利要量力而行，不能超过政府的承受极限，否则国家财政一直赤字，早晚会像欧猪四国一样爆发债务危机。我支持医疗保险，但不支持全民免费医疗。国家要有足够的资源发展自己，把所有的资源都投入到福利中，国家得不到发展，国家实力得不到增强，到头来还是要老百姓来买单。</p>
+<p>民主有时候导致行政效率低下，甚至行政瘫痪。就我认为，民主应该是少数服从多数，多数尊重少数。但是在民粹盛行的社会，少数很多时候绑架了多数。以选票为目的的政治的环境，导致政治人物喜欢为弱势的少数发声，但是却忽略了大多数人的利益。而且人都是自私的，都只是考虑自己的利益，国家的利益总是其次。当国家利益和少数人利益有冲突的时候，这些人就应该做出牺牲。在台湾，人们不让建火力发电，风力发电，核能发电，说对环境不好，不让在自己家附近建，但是又要国家不涨电价。这真是又让马儿跑又让马儿不吃草。当初听到港珠澳大桥因为香港大妈申诉而停工的时候，我还欢呼雀跃，说内地什么时候也能这样，但是明显对香港经济发展有利的重大建设被迫停工，浪费的是全民的纳税钱，浪费的是全香港的发展机会。台湾因为蓝绿对峙，一个服务贸易协定，大陆明显让利，结果还是卡在立法院，迟迟不能通过。民主政治是要靠人民素养的，选票政治并不是民主。</p>
+<p>人民都是短视的，人民都是容易被舆论导向所影响的。全民拥护的决策不一定是最好的，所以才要有政治家的高瞻远瞩。当党的第一代领导人搞两弹一星的时候，国家一穷二白，没有战略的眼光怎能下这样的决心。当邓小平改革开放的时候，有谁能想到会有今天的成绩。我们的领导人都是经历过各种历练的人精，他们的眼光和谋略定会比我们要强的多，相信他们，定能做出最有利于国家的决策。民族主义者总说国家太软，黄岩岛事件的时候，总是在说，为什么不打过去，软蛋。但是经过一年的拉锯战，黄岩岛还不是牢牢的控制在我们手中。国家要发展就离不开和平稳定的环境，国家的实力在增强，美帝的实力在减弱，时间是站在我们这边的。</p>
+<p>各种愤青，带路党们，只有中国强大，中国人才有尊严，告别那个华人与狗不得入内的时代。我觉着越是在国外的华人越能感受到国家强大给人们带来的荣耀，无论是什么国籍，永远是华夏子孙。当排华事件发生的时候，别人可不管你是不是印尼国籍。华人的海外地位也永远离不开中国的国际地位。美国ABC辱华会因为华人的抗议而道歉，全是因为华人的团结，对祖国的热爱及中国的强大。</p>
+<p>希望那些对国家不满的人，不要总是看到社会不好的一面，国家这么大，什么事情都会发生，多看看好的一面，会让我们活的更加开心。国家在发展，国家在给我们希望，跟世界上大多数国家相比，做为中国的国民，我们是无比幸福的，而且中国终将会成为世界上最强大的国家。</p>
+<p>推荐下让我发生转变的漫画《那年那兔那些事儿》，欢迎到百度那年那兔那些事儿吧。还有天涯国观的《我们的征途是星辰大海》。</p>
+<p>我自认是有一个思考能力的人，我依然被舆论所影响。即使中国普选领导人，民众有足够的能力辨别哪些是真的有能力的领导么？而不是一个演说家。民众也没有机会近距离接触候选人，了解候选人，最后只能被舆论所影响，所以大选不过是烧钱的舆论战。普选除了给予民众能自己决定国家领导人的错觉与快感，没有实质意义。所而国家的集体领导方式，党内的选拔机制更加合理。无论什么样的方式，只要能选出能带领我们进步的领导人，这样的方式就应该得到人民的拥护。普选不过是一场骗局罢了。政治还是应该让精英来玩。</p>
+<p>个人希望，香港能真正融入中国；台湾能够早日回归，但是不要增加特权阶级；中国早日复兴。</p>
+<p>我爱祖国，我骄傲。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hongzheng.me/2013/12/24/change_of_myself/" data-id="cikkjyvyy000fmhonmfchp1j4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/政治与社会/">政治与社会</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/11/20/restart_from_hexo/">重新拾起我的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2014/01/20/vsftp_configuration/">vsftp 配置</a>
+          </li>
+        
+          <li>
+            <a href="/2014/01/19/digitalocean-mysql/">DigitalOcean mysql无法启动</a>
+          </li>
+        
+          <li>
+            <a href="/2014/01/19/yum_install_mongodb_nodejs/">用yum安装mongodb, nodejs</a>
+          </li>
+        
+          <li>
+            <a href="/2014/01/03/ajaxfileupload_ie8_problems/">AjaxFileUpload IE8 problems</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Hongzheng Wang<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

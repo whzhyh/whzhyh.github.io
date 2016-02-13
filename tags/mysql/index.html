@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: mysql | reStart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="reStart">
+<meta property="og:url" content="http://hongzheng.me/tags/mysql/index.html">
+<meta property="og:site_name" content="reStart">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="reStart">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="reStart" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">reStart</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">再出发</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hongzheng.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-digitalocean-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/19/digitalocean-mysql/" class="article-date">
+  <time datetime="2014-01-20T03:34:09.000Z" itemprop="datePublished">Jan 19 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/19/digitalocean-mysql/">DigitalOcean mysql无法启动</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看到DigitalOcean的vps价格不贵，想装来试试，如果效果好的话，就把godaddy上的博客迁移过来。但是装好mysql之后，无法启动，让我很是郁闷。</p>
+<p>下面我们来看下错误日志吧，大概就是这个样子的：</p>
+<pre>
+131005 14:11:41 [Note] Plugin 'FEDERATED' is disabled.
+131005 14:11:41 InnoDB: The InnoDB memory heap is disabled
+131005 14:11:41 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+131005 14:11:41 InnoDB: Compressed tables use zlib 1.2.3.4
+131005 14:11:41 InnoDB: Initializing buffer pool, size = 128.0M
+InnoDB: mmap(135987200 bytes) failed; errno 12
+131005 14:11:41 InnoDB: Completed initialization of buffer pool
+131005 14:11:41 InnoDB: Fatal error: cannot allocate memory for the buffer pool
+131005 14:11:41 [ERROR] Plugin 'InnoDB' init function returned error.
+131005 14:11:41 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+131005 14:11:41 [ERROR] Unknown/unsupported storage engine: InnoDB
+</pre>
+
+<p>开始总以为是mysql配置的问题，后来经过研究，居然是因为没有开启 Swap Space。同样的问题其他人也遇到过。不得不说，这应该算是DigitalOcean的bug吧。</p>
+<p>开启Swap Space的过程略复杂，我就偷下懒，把别人的方法copy过来了。</p>
+<h2 id="Check_for_Swap_Space"><a href="#Check_for_Swap_Space" class="headerlink" title="Check for Swap Space"></a>Check for Swap Space</h2><hr>
+<p>Before we proceed to set up a swap file, we need to check if any swap files have been enabled on the VPS by looking at the summary of swap usage.</p>
+<pre>sudo swapon -s</pre>
+An empty list will confirm that you have no swap files enabled:
+<pre>Filename                Type        Size    Used    Priority</pre>
+
+<h2 id="Check_the_File_System"><a href="#Check_the_File_System" class="headerlink" title="Check the File System"></a>Check the File System</h2><hr>
+<p>After we know that we do not have a swap file enabled on the virtual server, we can check how much space we have on the server with the <code>df</code>command. The swap file will take 512MB— since we are only using up about 8% of the /dev/sda, we can proceed.</p>
+<pre>df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/sda        20907056 1437188  18421292   8% /
+udev              121588       4    121584   1% /dev
+tmpfs              49752     208     49544   1% /run
+none                5120       0      5120   0% /run/lock
+none              124372       0    124372   0% /run/shm</pre>
+
+<h2 id="Create_and_Enable_the_Swap_File"><a href="#Create_and_Enable_the_Swap_File" class="headerlink" title="Create and Enable the Swap File"></a>Create and Enable the Swap File</h2><hr>
+<p>Now it’s time to create the swap file itself using the dd command :</p>
+<pre>sudo dd if=/dev/zero of=/swapfile bs=1024 count=512k</pre>
+“of=/swapfile” designates the file’s name. In this case the name is swapfile.
+
+Subsequently we are going to prepare the swap file by creating a linux swap area:
+<pre>sudo mkswap /swapfile</pre>
+The results display:
+<pre>Setting up swapspace version 1, size = 262140 KiB
+no label, UUID=103c4545-5fc5-47f3-a8b3-dfbdb64fd7eb</pre>
+Finish up by activating the swap file:
+<pre>sudo swapon /swapfile</pre>
+You will then be able to see the new swap file when you view the swap summary.
+<pre>swapon -s
+Filename                Type        Size    Used    Priority
+/swapfile                               file        262140    0    -1</pre>
+This file will last on the virtual private server until the machine reboots. You can ensure that the swap is permanent by adding it to the fstab file.
+
+Open up the file:
+<pre>sudo nano /etc/fstab</pre>
+Paste in the following line:
+<pre> /swapfile       none    swap    sw      0       0</pre>
+Swappiness in the file should be set to 0\. Skipping this step may cause both poor performance, whereas setting it to 0 will cause swap to act as an emergency buffer, preventing out-of-memory crashes.
+
+You can do this with the following commands:
+<pre>echo 0 | sudo tee /proc/sys/vm/swappiness
+echo vm.swappiness = 0 | sudo tee -a /etc/sysctl.conf</pre>
+To prevent the file from being world-readable, you should set up the correct permissions on the swap file:
+<pre>sudo chown root:root /swapfile
+sudo chmod 0600 /swapfile</pre>
+
+<p>参考资料：<a href="https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04" target="_blank" rel="external">https://www.digitalocean.com/community/articles/how-to-add-swap-on-ubuntu-12-04</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hongzheng.me/2014/01/19/digitalocean-mysql/" data-id="cikkjyvyq000amhongdch5a64" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/政治与社会/">政治与社会</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/11/20/restart_from_hexo/">重新拾起我的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2014/01/20/vsftp_configuration/">vsftp 配置</a>
+          </li>
+        
+          <li>
+            <a href="/2014/01/19/digitalocean-mysql/">DigitalOcean mysql无法启动</a>
+          </li>
+        
+          <li>
+            <a href="/2014/01/19/yum_install_mongodb_nodejs/">用yum安装mongodb, nodejs</a>
+          </li>
+        
+          <li>
+            <a href="/2014/01/03/ajaxfileupload_ie8_problems/">AjaxFileUpload IE8 problems</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Hongzheng Wang<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>
