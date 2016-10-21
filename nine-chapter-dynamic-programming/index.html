@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>九章 - 动态规划笔记 | Keep Walking</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">九章 - 动态规划笔记</h1><a id="logo" href="/.">Keep Walking</a><p class="description">再出发</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">九章 - 动态规划笔记</h1><div class="post-meta">Oct 19, 2016<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="nine-chapter-dynamic-programming/" href="/nine-chapter-dynamic-programming/#disqus_thread" class="disqus-comment-count"></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么情况下使用动态规划"><span class="toc-number">1.</span> <span class="toc-text">什么情况下使用动态规划</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动态规划的-4-点要素"><span class="toc-number">2.</span> <span class="toc-text">动态规划的 4 点要素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#什么情况下可能使用-不用动态规划"><span class="toc-number">3.1.</span> <span class="toc-text">什么情况下可能使用/不用动态规划?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三种面试常见的动态规划类别及状态特点"><span class="toc-number">3.2.</span> <span class="toc-text">三种面试常见的动态规划类别及状态特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#两招独孤九剑"><span class="toc-number">3.3.</span> <span class="toc-text">两招独孤九剑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#坐标型"><span class="toc-number">3.4.</span> <span class="toc-text">坐标型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#单序列"><span class="toc-number">3.5.</span> <span class="toc-text">单序列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#双序列"><span class="toc-number">3.6.</span> <span class="toc-text">双序列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#划分型"><span class="toc-number">3.7.</span> <span class="toc-text">划分型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#背包型"><span class="toc-number">3.8.</span> <span class="toc-text">背包型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#区间型"><span class="toc-number">3.9.</span> <span class="toc-text">区间型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#博弈型"><span class="toc-number">3.10.</span> <span class="toc-text">博弈型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#记忆化搜索"><span class="toc-number">3.11.</span> <span class="toc-text">记忆化搜索</span></a></li></ol></li></ol></div></div><div class="post-content"><h4 id="什么情况下使用动态规划"><a href="#什么情况下使用动态规划" class="headerlink" title="什么情况下使用动态规划"></a>什么情况下使用动态规划</h4><p>满足下面三个条件之一，则极有可能使用动态规划 90% - 95%：</p>
+<ol>
+<li>求最大值，最小值</li>
+<li>判断是否可行</li>
+<li>统计方案个数</li>
+</ol>
+<p>极不可能使用动态规划的情况：</p>
+<ol>
+<li>求出所有具体的方案而非方案的个数</li>
+<li>输入数据是一个集合而不是序列</li>
+<li>暴力的算法已经是多项式级别</li>
+</ol>
+<h4 id="动态规划的-4-点要素"><a href="#动态规划的-4-点要素" class="headerlink" title="动态规划的 4 点要素"></a>动态规划的 4 点要素</h4><ol>
+<li>状态 State<br>灵感，创造⼒，存储小规模问题的结果 <ul>
+<li>最优解 / Maximum / Minimum </li>
+<li>Yes / No </li>
+<li>Count(*) </li>
+</ul>
+</li>
+<li>方程 Function<br>状态之间的联系，怎么通过⼩的状态，来求得⼤的状态 </li>
+<li>初始化 Intialization<br>最极限的小状态是什么，起点 </li>
+<li>答案 Answer<br>最⼤的那个状态是什么，终点</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><h5 id="什么情况下可能使用-不用动态规划"><a href="#什么情况下可能使用-不用动态规划" class="headerlink" title="什么情况下可能使用/不用动态规划?"></a>什么情况下可能使用/不用动态规划?</h5><ul>
+<li>最大值最小值/是否可行/方案总数 </li>
+<li>求所有方案/集合而不是序列/指数级到多项式</li>
+</ul>
+<h5 id="三种面试常见的动态规划类别及状态特点"><a href="#三种面试常见的动态规划类别及状态特点" class="headerlink" title="三种面试常见的动态规划类别及状态特点"></a>三种面试常见的动态规划类别及状态特点</h5><ul>
+<li>坐标,单序列,双序列</li>
+</ul>
+<h5 id="两招独孤九剑"><a href="#两招独孤九剑" class="headerlink" title="两招独孤九剑"></a>两招独孤九剑</h5><ul>
+<li>二维DP需要初始化第0行和第0列 </li>
+<li>n个字符的字符串要开n+1个位置的数组</li>
+</ul>
+<h5 id="坐标型"><a href="#坐标型" class="headerlink" title="坐标型"></a>坐标型</h5><ol>
+<li>state: <ul>
+<li>f[x] 表示我从起点走到坐标x…… </li>
+<li>f[x][y] 表示我从起点走到坐标x,y……</li>
+</ul>
+</li>
+<li>function: 研究走到x,y这个点之前的一步 </li>
+<li>initialize: 起点 </li>
+<li>answer: 终点</li>
+</ol>
+<h5 id="单序列"><a href="#单序列" class="headerlink" title="单序列"></a>单序列</h5><p>以字符串居多</p>
+<ol>
+<li>state: f[i]表示<strong>前</strong>i个位置/数字/字符,第i个… </li>
+<li>function: f[i] = f[j] … j 是i之前的一个位置 </li>
+<li>initialize: f[0].. </li>
+<li>answer: f[n].. <ul>
+<li>一般answer是f(n)而不是f(n-1), 因为对于n个字符,包含前0个字符(空串),前1个字符……前n个字符。</li>
+</ul>
+</li>
+</ol>
+<h5 id="双序列"><a href="#双序列" class="headerlink" title="双序列"></a>双序列</h5><p>一般给两个字符串</p>
+<ol>
+<li>state: f[i][j]代表了第一个sequence的前i个数字/字符,配上第二个sequence的前j个…</li>
+<li>function: f[i][j] = 研究第i个和第j个的匹配关系 </li>
+<li>initialize: f[i][0] 和 f[0][i] </li>
+<li>answer: f[n][m] <ul>
+<li>n = s1.length() </li>
+<li>m = s2.length()<h5 id="划分型"><a href="#划分型" class="headerlink" title="划分型"></a>划分型</h5></li>
+</ul>
+</li>
+</ol>
+<p>题目：给一个序列，求一次划分区间，求区间中的最大值 </p>
+<ol>
+<li>state: f[i] 表⽰示前 个元素的最⼤大值 </li>
+<li>function: f[i] = 前 i 个元素里⾯选一个区间的最⼤值 </li>
+<li>initialize: f[0].. </li>
+<li>answer: f[n-1]..</li>
+</ol>
+<p>优化 </p>
+<ol>
+<li>state: <ul>
+<li>gobal[i] 表示前 i 个元素的最大值 </li>
+<li>local[i] 表⽰示包含第 i 个元素前 i 个元素的最大值 </li>
+</ul>
+</li>
+<li>function: <ul>
+<li>global[i] = 通过 local[i] 更新 </li>
+<li>local[i] = 通过原序列或者 global[i] 更新 </li>
+</ul>
+</li>
+<li>initialize: global[0].. Local[i] </li>
+<li>answer: global[n-1]..</li>
+</ol>
+<h5 id="背包型"><a href="#背包型" class="headerlink" title="背包型"></a>背包型</h5><p>特点：</p>
+<ol>
+<li>用值作为DP维度 </li>
+<li>DP过程就是填写矩阵 </li>
+<li>可以滚动数组优化</li>
+</ol>
+<p>Backpack</p>
+<ol>
+<li>State:<ul>
+<li>f[i][S] “前i”个物品，取出一些能否组成和为S</li>
+</ul>
+</li>
+<li>Function:<ul>
+<li>f[i][S] = f[i-1][S - a[i]] or f[i-1][S]</li>
+</ul>
+</li>
+<li>Intialize:<ul>
+<li>f[i][0] = true; f[0][1..target] = false</li>
+</ul>
+</li>
+<li>Answer:<ul>
+<li>检查所有的f[n][j]</li>
+</ul>
+</li>
+</ol>
+<p>时间复杂度 O(n*S) ， 滚动数组优化</p>
+<h5 id="区间型"><a href="#区间型" class="headerlink" title="区间型"></a>区间型</h5><p>特点： </p>
+<ol>
+<li>求一段区间的解max/min/count </li>
+<li>转移方程通过区间更新</li>
+<li>从大到小的更新</li>
+</ol>
+<p>这种题目共性就是区间最后求[0,n-1] 这样一个区间<br>逆向思维分析 从大到小就能迎刃而解<br>逆向 =》 分治类似</p>
+<h5 id="博弈型"><a href="#博弈型" class="headerlink" title="博弈型"></a>博弈型</h5><p>博弈有先后手</p>
+<ol>
+<li>State:<br> 定义一个人的状态</li>
+<li>Function:<br> 考虑两个人的状态做状态更新</li>
+<li>Initialize:</li>
+<li>Answer:<br>先思考最小状态<br>然后思考大的状态-&gt; 往小的递推，那么非常适合记忆化搜索</li>
+</ol>
+<h5 id="记忆化搜索"><a href="#记忆化搜索" class="headerlink" title="记忆化搜索"></a>记忆化搜索</h5><ul>
+<li>本质上：动态规划</li>
+<li>动态规划就是解决了重复计算的搜索</li>
+<li><p>大部分DP都可以用记忆化搜索做</p>
+</li>
+<li><p>动态规划的实现方式：</p>
+<ul>
+<li>循环（从小到大递推） </li>
+<li>记忆化搜索(从大到小搜索)<ul>
+<li>画搜索树 </li>
+<li>万金油</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>什么时候用记忆化搜索？</p>
+<ul>
+<li>状态转移特别麻烦，不是顺序性。</li>
+<li>初始化状态不是很容易找到</li>
+</ul>
+</li>
+<li><p>题目类型</p>
+<ul>
+<li>博弈类问题 </li>
+<li>区间类问题</li>
+</ul>
+</li>
+<li>适合解决题目<ul>
+<li>状态特别复杂 </li>
+<li>初始化不好初始化。</li>
+</ul>
+</li>
+</ul>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://hongzheng.me/nine-chapter-dynamic-programming/" data-id="ciuhok5p0005twgonhypcsu8b" class="article-share-link">Share</a><div class="tags"><a href="/tags/Algorithm/">Algorithm</a></div><div class="post-nav"><a href="/leetcode/leetcode-70-climbing-stairs/" class="pre">70. Climbing Stairs</a><a href="/leetcode/leetcode-136-single-number/" class="next">136. Single Number</a></div><div id="disqus_thread"><script>var disqus_shortname = 'hongzheng';
+var disqus_identifier = 'nine-chapter-dynamic-programming/';
+var disqus_title = '九章 - 动态规划笔记';
+var disqus_url = 'http://hongzheng.me/nine-chapter-dynamic-programming/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//hongzheng.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://hongzheng.me"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/lintcode/">lintcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/政治与社会/">政治与社会</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/Interview/" style="font-size: 15px;">Interview</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/lintcode/" style="font-size: 15px;">lintcode</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-337-house-robber-iii/">337. House Robber III</a></li><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-213-house-robber-ii/">213. House Robber II</a></li><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-198-house-robber/">198. House Robber</a></li><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-53-maximum-subarray/">53. Maximum Subarray</a></li><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-121-best-time-to-buy-and-sell-stock/">121. Best Time to Buy and Sell Stock</a></li><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-70-climbing-stairs/">70. Climbing Stairs</a></li><li class="post-list-item"><a class="post-list-link" href="/nine-chapter-dynamic-programming/">九章 - 动态规划笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-136-single-number/">136. Single Number</a></li><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-151-reverse-words-in-a-string/">151. Reverse Words in a String</a></li><li class="post-list-item"><a class="post-list-link" href="/leetcode/leetcode-167-two-sum-ii-input-array-is-sorted/">167. Two Sum II - Input array is sorted</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//hongzheng.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Keep Walking.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create','UA-85108926-1','auto');ga('send','pageview');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
